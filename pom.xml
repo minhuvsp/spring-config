@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.vsp.spring.config</groupId>
+  <artifactId>spring-config</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>com.vsp.spring.config</name>
+
+
+	<properties>
+		<api.gb.version>3.1.312</api.gb.version>
+		<spring.version>4.1.7.RELEASE</spring.version>
+		<camel.version>2.15.2</camel.version>
+		<sold.rates.commons.version>1.0.0-SNAPSHOT</sold.rates.commons.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.vsp.api</groupId>
+			<artifactId>api-gb-model</artifactId>
+			<version>${api.gb.version}</version>
+		</dependency>
+		
+		<!-- 
+		<dependency>
+			<groupId>com.vsp.rating</groupId>
+			<artifactId>rating-commons</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		 -->
+		<dependency>
+			<groupId>com.vsp.rating</groupId>
+			<artifactId>sold-rates-commons</artifactId>
+			<version>${sold.rates.commons.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vsp</groupId>
+			<artifactId>log4j-plus-commons-adapter</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.vsp.il</groupId>
+			<artifactId>il-slf4j-impl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+		<!-- persistence -->
+
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-jpa-hibernate4</artifactId>
+			<version>7.1.1.Final</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hornetq-core</artifactId>
+					<groupId>org.hornetq</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.4.Final</version>
+		</dependency>
+
+		<!-- test -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.4</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+    			<groupId>com.h2database</groupId>
+    			<artifactId>h2</artifactId>
+    			<version>1.4.192</version>
+    			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.15</version>
+					<configuration>
+						<argLine>-Xms512m -Xmx1024m -XX:MaxPermSize=512m</argLine>
+						<excludes>
+							<exclude>**/BaseTestCase.java</exclude>
+							<exclude>**/TestDBConfigBean.java</exclude>
+						</excludes>
+						<includes>
+						</includes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.7.4.201502262128</version>
+					<executions>
+						<execution>
+							<id>prepare-agent</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>package</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

@@ -42,10 +42,6 @@ public class DBConfigBeanJava
 		System.out.println("------------------------------------------------------");
 		System.out.println("Begin Execution of " + getClass().getName());
 
-        if (!Preferences.initialized()) {
-        	Preferences.initialize("TestDB", "./src/main/resources/META-INF");
-        }
-        
 		ApplicationContext context = new AnnotationConfigApplicationContext(DBConfig.class);
 
 		persistenceSaveService = context.getBean(PersistenceSaveService.class);
@@ -84,7 +80,11 @@ public class DBConfigBeanJava
 
 	public static void main(String[] args) throws Exception {
 
-		DBConfigBeanJava runner = new DBConfigBeanJava();
+        if (!Preferences.initialized()) {
+        	Preferences.initialize("TestDB", "./src/main/resources/META-INF");
+        }
+        
+        DBConfigBeanJava runner = new DBConfigBeanJava();
 		
 		runner.testCreateWithSoldRateTier();
        

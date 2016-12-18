@@ -20,13 +20,6 @@
 			<version>${api.gb.version}</version>
 		</dependency>
 		
-		<!-- 
-		<dependency>
-			<groupId>com.vsp.rating</groupId>
-			<artifactId>rating-commons</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-		 -->
 		<dependency>
 			<groupId>com.vsp.rating</groupId>
 			<artifactId>sold-rates-commons</artifactId>
@@ -64,11 +57,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.vsp.il</groupId>
 			<artifactId>il-slf4j-impl</artifactId>
+			<version>2.1.7-jbossing-2</version>
 		</dependency>
 
 		<dependency>
@@ -88,6 +83,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.as</groupId>
@@ -102,10 +98,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.2.4.Final</version>
 		</dependency>
@@ -116,6 +108,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+			<version>4.12</version>
 		</dependency>
 
 		<dependency>

@@ -21,7 +21,7 @@ import com.vsp.product.dao.RetrieveClientProductDao;
 import com.vsp.product.dao.SearchClientProductDao;
 
 @Configuration("product-api-srvclientproduct-config")
-@ComponentScan(basePackages = { "com.vsp.product.mapper.cassandra.retrieve" }) // this is for com.vsp.product.mapper.cassandra.retrieve.Defaults
+@ComponentScan(basePackages = { "com.vsp.product.mapper.cassandra.retrieve" }) // this is for com.vsp.product.mapper.cassandra.retrieve.Defaults implements ApplicationContextAware
 public class CassandraConfig extends BaseRouteBuilder {
 	private static final String cacheBeanName = "cacheLifecycle";
 	private static boolean cacheOn = Preferences.getBoolean("command", "product.cache.on");
